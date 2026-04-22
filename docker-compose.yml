@@ -1,0 +1,12 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: servery-nginx
+    ports:
+      - "4543:80"
+    volumes:
+      - ./nginx/sites-available:/etc/nginx/sites-available:ro
+      - ./nginx/40-enable-sites.sh:/docker-entrypoint.d/40-enable-sites.sh:ro
+      - ./www:/var/www:ro
+      - ./logs:/var/log/nginx
+    restart: unless-stopped
