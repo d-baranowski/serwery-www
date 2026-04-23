@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>servery-www — JMeter load test reports</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font: 15px/1.5 -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif; max-width: 880px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+  h1 { margin-bottom: .25rem; }
+  h1 + p { color: #666; margin-top: 0; }
+  .card { display: block; padding: 1.25rem 1.5rem; margin: 1rem 0; border: 1px solid #e1e4e8; border-radius: 8px; text-decoration: none; color: inherit; }
+  .card:hover { border-color: #0366d6; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .card h2 { margin: 0 0 .5rem; font-size: 1.15rem; }
+  .stats { color: #444; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+  .label { color: #888; }
+  footer { margin-top: 2rem; color: #888; font-size: 13px; }
+  code { background: #f4f4f4; padding: 1px 5px; border-radius: 3px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<h1>servery-www — testy obciążeniowe</h1>
+<p>Nginx + statyczna strona, port 4543. Każdy test: ramp-up → 60s stałego obciążenia → stop.
+Cel: <code>host.docker.internal:4543</code>. Klient: JMeter w kontenerze (<code>justb4/jmeter</code>).</p>
+
+<a class="card" href="50u/">
+  <h2>50 użytkowników</h2>
+  <div class="stats">
+    <span class="label">samples:</span> 130,584 &nbsp;
+    <span class="label">errors:</span> 0 (0%) &nbsp;
+    <span class="label">avg:</span> 19 ms &nbsp;
+    <span class="label">p95:</span> 59 ms &nbsp;
+    <span class="label">p99:</span> 75 ms &nbsp;
+    <span class="label">throughput:</span> 2,179 req/s
+  </div>
+</a>
+
+<a class="card" href="500u/">
+  <h2>500 użytkowników</h2>
+  <div class="stats">
+    <span class="label">samples:</span> 3,084 &nbsp;
+    <span class="label">errors:</span> 0 (0%) &nbsp;
+    <span class="label">avg:</span> 6,777 ms &nbsp;
+    <span class="label">p95:</span> 11,747 ms &nbsp;
+    <span class="label">p99:</span> 16,230 ms &nbsp;
+    <span class="label">throughput:</span> 39 req/s
+  </div>
+</a>
+
+<a class="card" href="5000u/">
+  <h2>5000 użytkowników</h2>
+  <div class="stats">
+    <span class="label">samples:</span> 3,195 &nbsp;
+    <span class="label">errors:</span> 0 (0%) &nbsp;
+    <span class="label">avg:</span> 18,170 ms &nbsp;
+    <span class="label">p95:</span> 26,399 ms &nbsp;
+    <span class="label">p99:</span> 26,425 ms &nbsp;
+    <span class="label">throughput:</span> 22 req/s
+  </div>
+</a>
+
+<footer>
+  Każda karta linkuje do pełnego raportu HTML z JMetera (wykresy throughput,
+  czasy odpowiedzi w czasie, rozkład kodów, itp.). Repo:
+  <a href="https://github.com/">github.com</a> (link do tego repo).
+</footer>
+
+</body>
+</html>
